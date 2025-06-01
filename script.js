@@ -9,7 +9,7 @@ openingCard.addEventListener("click", () => {
     "Happy birthday Madamjii !!!",
     "It’s your special day",
     "So..........!!",
-    "I made something special for you"
+    "I make something special for you"
   ];
   let index = 0;
   page1Text.style.opacity = 0;
@@ -54,17 +54,18 @@ toPage3Btn.addEventListener("click", () => goToPage(3));
 
 // Page 3: Flip Cards
 let flippedCount = 0;
-const flipCards = document.querySelectorAll(".flip-card");
+const cards = document.querySelectorAll(".flip-card");
 const toPage4Btn = document.getElementById("toPage4");
 
-flipCards.forEach(card => {
+cards.forEach(card => {
   let flipped = false;
   card.addEventListener("click", () => {
     if (!flipped) {
       card.classList.add("flipped");
+      card.textContent = card.getAttribute("data-text");
       flipped = true;
       flippedCount++;
-      if (flippedCount === flipCards.length) {
+      if (flippedCount === cards.length) {
         toPage4Btn.classList.remove("hidden");
       }
     }
