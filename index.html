@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Madamji</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preload" href="assets/tacobae.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="assets/SaturdayLovers.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+</head>
+<body>
+  <div class="landscape-warning">Please rotate your device to landscape mode 🌐</div>
+  <video autoplay muted loop id="bg-video">
+    <source src="assets/bg_video.mp4" type="video/mp4">
+  </video>
+  <div class="main-content">
+    <!-- Page 1 -->
+    <div id="page1" class="page active">
+      <div class="card card-front" id="openingCard">
+        <div id="page1Text">Tap Here</div>
+      </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div id="page2" class="page">
+      <div class="card green-card">
+        <div class="voice-title">Here is a voice note for you 💌</div>
+        <audio id="voiceNote" controls>
+          <source src="assets/voice_note.mp3" type="audio/mpeg">
+        </audio>
+        <div class="glowing-heart">❤️</div>
+        <button id="toPage3" class="nav-button hidden">Let’s gooooo ➜</button>
+      </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div id="page3" class="page">
+      <div class="flip-card-container">
+        <div class="flip-card" data-text="Another year of your love is the greatest gift to me" style="background-image: url('assets/card2.png')"></div>
+        <div class="flip-card" data-text="To the queen of my heart—your smile is my favorite reason to wake up." style="background-image: url('assets/card3.png')"></div>
+        <div class="flip-card" data-text="You're not older, just more stunning every year." style="background-image: url('assets/card4.png')"></div>
+        <div class="flip-card" data-text="You’re my favorite notification, even on silent mode." style="background-image: url('assets/card5.png')"></div>
+      </div>
+      <button id="toPage4" class="nav-button hidden">Well, I have written something for you Madam ji ➜</button>
+    </div>
+
+    <!-- Page 4 -->
+    <div id="page4" class="page">
+      <div class="final-message">
+        Happy Birthday, my love! Today is the day the world was blessed with someone so amazing, and I feel incredibly lucky to call you mine. You are my greatest joy, my strength, and my reason to smile every day.<br><br>
+        On your special day, I just want you to know how deeply loved you are. You’ve touched my heart in ways no one else ever could. Every laugh we’ve shared, every moment we’ve spent together, and every dream we’ve built brings me closer to you.<br><br>
+        My wish for you today is simple—may this year bring you endless happiness, success, and the fulfillment of all your dreams. I promise to be here, loving you through it all, celebrating every victory and standing strong in every challenge.<br><br>
+        Thank you for being the wonderful person you are and for filling my life with so much love. Happy Birthday to my heart, my happiness, and my forever. I love you more than words could ever say.
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
