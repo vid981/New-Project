@@ -54,19 +54,20 @@ toPage3Btn.addEventListener("click", () => goToPage(3));
 
 // Page 3: Flip Cards
 let flippedCount = 0;
-const cards = document.querySelectorAll(".flip-card");
+const flipCards = document.querySelectorAll(".flip-card");
 const toPage4Btn = document.getElementById("toPage4");
 
-cards.forEach(card => {
+flipCards.forEach(card => {
+  let flipped = false;
   card.addEventListener("click", () => {
-    if (!card.classList.contains("flipped")) {
+    if (!flipped) {
       card.classList.add("flipped");
+      flipped = true;
       flippedCount++;
-      if (flippedCount === cards.length) {
+      if (flippedCount === flipCards.length) {
         toPage4Btn.classList.remove("hidden");
       }
     }
   });
 });
-
 toPage4Btn.addEventListener("click", () => goToPage(4));
