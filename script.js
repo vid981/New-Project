@@ -71,3 +71,8 @@ cards.forEach(card => {
     }
   });
 });
+
+// Page 4 navigation
+toPage4Btn.addEventListener("click", () => {
+  goToPage(4);
+});
