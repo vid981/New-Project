@@ -6,10 +6,10 @@ let currentPage = 1;
 
 openingCard.addEventListener("click", () => {
   let messages = [
-    "Happy birthday Madamji !!!",
+    "Happy birthday Madamjii !!!",
     "It’s your special day",
     "So..........!!",
-    "I want to make something special for you"
+    "I make something special for you"
   ];
   let index = 0;
   page1Text.style.opacity = 0;
