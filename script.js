@@ -1,46 +1,74 @@
-// Page navigation
-function goToPage(n) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page' + n).classList.add('active');
-}
+// Handle tap on page 1 card
+const openingCard = document.getElementById("openingCard");
+const page1Text = document.getElementById("page1Text");
+const pages = document.querySelectorAll(".page");
+let currentPage = 1;
 
-// Page 1 text animation
-function startTextAnimation() {
-  const card = document.getElementById('openingCard');
-  const text = document.getElementById('page1Text');
-  const messages = [
+openingCard.addEventListener("click", () => {
+  let messages = [
     "Happy birthday Madamji !!!",
     "It’s your special day",
     "So..........!!",
     "I want to make something special for you"
   ];
-  let i = 0;
-  card.onclick = null;
-  const interval = setInterval(() => {
-    if (i < messages.length) {
-      text.style.opacity = 0;
+  let index = 0;
+  page1Text.style.opacity = 0;
+
+  const showNext = () => {
+    if (index < messages.length) {
+      page1Text.textContent = messages[index];
+      page1Text.style.opacity = 1;
       setTimeout(() => {
-        text.innerText = messages[i++];
-        text.style.opacity = 1;
-      }, 500);
+        page1Text.style.opacity = 0;
+        index++;
+        setTimeout(showNext, 600); // Wait between fades
+      }, 2000);
     } else {
-      clearInterval(interval);
-      setTimeout(() => goToPage(2), 2000);
+      // After final message, fade card out and go to Page 2
+      setTimeout(() => {
+        openingCard.style.opacity = 0;
+        setTimeout(() => {
+          goToPage(2);
+        }, 800);
+      }, 500);
     }
-  }, 2000);
+  };
+
+  showNext();
+});
+
+// Navigation function
+function goToPage(n) {
+  pages.forEach(p => p.classList.remove("active"));
+  document.getElementById(`page${n}`).classList.add("active");
+  currentPage = n;
 }
 
-// Page 2: show button after audio ends
+// Page 2: Show button after audio ends
 const audio = document.getElementById("voiceNote");
-audio.onended = () => {
-  document.getElementById("toPage3").classList.remove("hidden");
-};
+const toPage3Btn = document.getElementById("toPage3");
+audio.addEventListener("ended", () => {
+  toPage3Btn.classList.remove("hidden");
+});
+toPage3Btn.addEventListener("click", () => goToPage(3));
 
-// Flip cards on Page 3
-function flipCard(card) {
-  card.classList.add("flipped");
-  const flipped = document.querySelectorAll(".flip-card.flipped").length;
-  if (flipped === 4) {
-    document.getElementById("toPage4").classList.remove("hidden");
-  }
-}
+// Page 3: Flip Cards
+let flippedCount = 0;
+const cards = document.querySelectorAll(".flip-card");
+const toPage4Btn = document.getElementById("toPage4");
+
+cards.forEach(card => {
+  let flipped = false;
+  card.addEventListener("click", () => {
+    if (!flipped) {
+      card.classList.add("flipped");
+      card.textContent = card.getAttribute("data-text");
+      flipped = true;
+      flippedCount++;
+      if (flippedCount === cards.length) {
+        toPage4Btn.classList.remove("hidden");
+      }
+    }
+  });
+});
+toPage4Btn.addEventListener("click", () => goToPage(4));
