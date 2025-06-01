@@ -58,17 +58,16 @@ const cards = document.querySelectorAll(".flip-card");
 const toPage4Btn = document.getElementById("toPage4");
 
 cards.forEach(card => {
-  let flipped = false;
   card.addEventListener("click", () => {
-    if (!flipped) {
+    if (!card.classList.contains("flipped")) {
       card.classList.add("flipped");
-      card.textContent = card.getAttribute("data-text");
-      flipped = true;
       flippedCount++;
       if (flippedCount === cards.length) {
         toPage4Btn.classList.remove("hidden");
       }
+    } else {
+      card.classList.remove("flipped");
+      flippedCount--;
     }
   });
 });
-toPage4Btn.addEventListener("click", () => goToPage(4));
