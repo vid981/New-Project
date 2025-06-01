@@ -76,3 +76,14 @@ cards.forEach(card => {
 toPage4Btn.addEventListener("click", () => {
   goToPage(4);
 });
+
+// Ensure background music starts after first tap (for mobile browsers)
+const bgMusic = document.getElementById("bgMusic");
+
+document.body.addEventListener("click", () => {
+  if (bgMusic.paused) {
+    bgMusic.play().catch(() => {
+      // Ignore autoplay errors silently
+    });
+  }
+}, { once: true });
